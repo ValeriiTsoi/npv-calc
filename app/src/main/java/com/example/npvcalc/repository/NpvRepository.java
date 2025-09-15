@@ -1,0 +1,1 @@
+package com.example.npvcalc.repository; import com.example.npvcalc.entity.NpvValue; import org.springframework.data.jpa.repository.*; import java.time.*; import java.util.*; public interface NpvRepository extends JpaRepository<NpvValue,Long>{ Optional<NpvValue> findByValuationDateAndSymbol(LocalDate date,String symbol);}

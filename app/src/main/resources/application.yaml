@@ -1,0 +1,15 @@
+server: { port: ${APP_PORT:8080} }
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:postgres}:${DB_PORT:5432}/${DB_NAME:npvdb}
+    username: ${DB_USER:npvuser}
+    password: ${DB_PASSWORD:npvpass}
+  jpa: { hibernate: { ddl-auto: none } }
+  ldap:
+    base: ${LDAP_BASE:dc=example,dc=org}
+    urls: ${LDAP_URL:ldap://openldap:389}
+    username: ${LDAP_MANAGER_DN:cn=admin,dc=example,dc=org}
+    password: ${LDAP_MANAGER_PASSWORD:admin}
+app:
+  token: { ttl-hours: ${TOKEN_TTL_HOURS:8} }
+  ldap: { user-dn-pattern: ${LDAP_USER_DN_PATTERN:uid={0},ou=people,dc=example,dc=org} }

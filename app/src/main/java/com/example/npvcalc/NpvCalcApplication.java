@@ -1,0 +1,1 @@
+package com.example.npvcalc; import org.springframework.boot.*; import org.springframework.boot.autoconfigure.*; @SpringBootApplication public class NpvCalcApplication { public static void main(String[] args){ SpringApplication.run(NpvCalcApplication.class,args);} }
