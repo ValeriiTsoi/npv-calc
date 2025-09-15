@@ -1,1 +1,21 @@
-package com.example.npvcalc.dto; import java.time.*; public class TokenResponse { private String token; private OffsetDateTime expiresAt; public TokenResponse(String t, OffsetDateTime e){this.token=t; this.expiresAt=e;} public String getToken(){return token;} public OffsetDateTime getExpiresAt(){return expiresAt;} }
+package com.example.npvcalc.dto;
+
+import java.time.*;
+
+public class TokenResponse {
+  private String token;
+  private OffsetDateTime expiresAt;
+
+  public TokenResponse(String t, OffsetDateTime e) {
+    this.token = t;
+    this.expiresAt = e;
+  }
+
+  public String getToken() {
+    return token;
+  }
+
+  public OffsetDateTime getExpiresAt() {
+    return expiresAt;
+  }
+}

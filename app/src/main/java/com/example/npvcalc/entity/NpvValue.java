@@ -1,1 +1,81 @@
-package com.example.npvcalc.entity; import jakarta.persistence.*; import java.math.*; import java.time.*; @Entity @Table(name="npv_values", uniqueConstraints=@UniqueConstraint(name="uk_date_symbol", columnNames={"valuation_date","symbol"})) public class NpvValue { @Id @GeneratedValue(strategy=GenerationType.IDENTITY) private Long id; @Column(name="valuation_date",nullable=false) private LocalDate valuationDate; @Column(name="symbol",nullable=false,length=32) private String symbol; @Column(name="npv",nullable=false,precision=18,scale=6) private BigDecimal npv; @Column(name="algo_version",length=32) private String algoVersion; @Column(name="calculated_at") private OffsetDateTime calculatedAt; public Long getId(){return id;} public void setId(Long id){this.id=id;} public LocalDate getValuationDate(){return valuationDate;} public void setValuationDate(LocalDate d){this.valuationDate=d;} public String getSymbol(){return symbol;} public void setSymbol(String s){this.symbol=s;} public BigDecimal getNpv(){return npv;} public void setNpv(BigDecimal v){this.npv=v;} public String getAlgoVersion(){return algoVersion;} public void setAlgoVersion(String a){this.algoVersion=a;} public OffsetDateTime getCalculatedAt(){return calculatedAt;} public void setCalculatedAt(OffsetDateTime c){this.calculatedAt=c;} }
+package com.example.npvcalc.entity;
+
+import jakarta.persistence.*;
+import java.math.*;
+import java.time.*;
+
+@Entity
+@Table(
+    name = "npv_values",
+    uniqueConstraints =
+        @UniqueConstraint(
+            name = "uk_date_symbol",
+            columnNames = {"valuation_date", "symbol"}))
+public class NpvValue {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+  @Column(name = "valuation_date", nullable = false)
+  private LocalDate valuationDate;
+
+  @Column(name = "symbol", nullable = false, length = 32)
+  private String symbol;
+
+  @Column(name = "npv", nullable = false, precision = 18, scale = 6)
+  private BigDecimal npv;
+
+  @Column(name = "algo_version", length = 32)
+  private String algoVersion;
+
+  @Column(name = "calculated_at")
+  private OffsetDateTime calculatedAt;
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public LocalDate getValuationDate() {
+    return valuationDate;
+  }
+
+  public void setValuationDate(LocalDate d) {
+    this.valuationDate = d;
+  }
+
+  public String getSymbol() {
+    return symbol;
+  }
+
+  public void setSymbol(String s) {
+    this.symbol = s;
+  }
+
+  public BigDecimal getNpv() {
+    return npv;
+  }
+
+  public void setNpv(BigDecimal v) {
+    this.npv = v;
+  }
+
+  public String getAlgoVersion() {
+    return algoVersion;
+  }
+
+  public void setAlgoVersion(String a) {
+    this.algoVersion = a;
+  }
+
+  public OffsetDateTime getCalculatedAt() {
+    return calculatedAt;
+  }
+
+  public void setCalculatedAt(OffsetDateTime c) {
+    this.calculatedAt = c;
+  }
+}

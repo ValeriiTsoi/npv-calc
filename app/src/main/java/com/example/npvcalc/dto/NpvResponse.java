@@ -1,1 +1,40 @@
-package com.example.npvcalc.dto; import java.math.*; import java.time.*; public class NpvResponse { private LocalDate date; private String symbol; private BigDecimal npv; private String source; private OffsetDateTime calculatedAt; public NpvResponse(LocalDate d,String s,BigDecimal n,String src,OffsetDateTime c){this.date=d;this.symbol=s;this.npv=n;this.source=src;this.calculatedAt=c;} public LocalDate getDate(){return date;} public String getSymbol(){return symbol;} public BigDecimal getNpv(){return npv;} public String getSource(){return source;} public OffsetDateTime getCalculatedAt(){return calculatedAt;} }
+package com.example.npvcalc.dto;
+
+import java.math.*;
+import java.time.*;
+
+public class NpvResponse {
+  private LocalDate date;
+  private String symbol;
+  private BigDecimal npv;
+  private String source;
+  private OffsetDateTime calculatedAt;
+
+  public NpvResponse(LocalDate d, String s, BigDecimal n, String src, OffsetDateTime c) {
+    this.date = d;
+    this.symbol = s;
+    this.npv = n;
+    this.source = src;
+    this.calculatedAt = c;
+  }
+
+  public LocalDate getDate() {
+    return date;
+  }
+
+  public String getSymbol() {
+    return symbol;
+  }
+
+  public BigDecimal getNpv() {
+    return npv;
+  }
+
+  public String getSource() {
+    return source;
+  }
+
+  public OffsetDateTime getCalculatedAt() {
+    return calculatedAt;
+  }
+}

@@ -1,1 +1,36 @@
-package com.example.npvcalc.service; import org.springframework.beans.factory.annotation.*; import org.springframework.stereotype.*; import javax.naming.*; import javax.naming.directory.*; import java.util.*; @Service public class LdapService { @Value("${spring.ldap.urls}") private String ldapUrl; @Value("${app.ldap.user-dn-pattern}") private String userDnPattern; @Value("${spring.ldap.base}") private String baseDn; public boolean authenticate(String username,String password){ String userDn=userDnPattern.replace("{0}",username); Hashtable<String,String> env=new Hashtable<>(); env.put(Context.INITIAL_CONTEXT_FACTORY,"com.sun.jndi.ldap.LdapCtxFactory"); env.put(Context.PROVIDER_URL,ldapUrl+"/"+baseDn); env.put(Context.SECURITY_AUTHENTICATION,"simple"); env.put(Context.SECURITY_PRINCIPAL,userDn); env.put(Context.SECURITY_CREDENTIALS,password); try{ DirContext ctx=new InitialDirContext(env); ctx.close(); return true; }catch(NamingException e){ return false; } } }
+package com.example.npvcalc.service;
+
+import java.util.*;
+import javax.naming.*;
+import javax.naming.directory.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+
+@Service
+public class LdapService {
+  @Value("${spring.ldap.urls}")
+  private String ldapUrl;
+
+  @Value("${app.ldap.user-dn-pattern}")
+  private String userDnPattern;
+
+  @Value("${spring.ldap.base}")
+  private String baseDn;
+
+  public boolean authenticate(String username, String password) {
+    String userDn = userDnPattern.replace("{0}", username);
+    Hashtable<String, String> env = new Hashtable<>();
+    env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+    env.put(Context.PROVIDER_URL, ldapUrl + "/" + baseDn);
+    env.put(Context.SECURITY_AUTHENTICATION, "simple");
+    env.put(Context.SECURITY_PRINCIPAL, userDn);
+    env.put(Context.SECURITY_CREDENTIALS, password);
+    try {
+      DirContext ctx = new InitialDirContext(env);
+      ctx.close();
+      return true;
+    } catch (NamingException e) {
+      return false;
+    }
+  }
+}
